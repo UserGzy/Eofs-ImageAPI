@@ -58,8 +58,8 @@
             window.onload = function showAPI() {
                 document.getElementById('linktextW').innerHTML=`${window.location.origin}/api/random?q=W`;
                 document.getElementById('linktextH').innerHTML=`${window.location.origin}/api/random?q=H`;
+                document.getElementById('linktextauto').innerHTML=`${window.location.origin}/api/random?q=auto`;
                 document.getElementById('linktextuni').innerHTML=`${window.location.origin}/api/random?q={Tag}`;
-                document.getElementById('linktextauto').innerHTML=`${window.location.origin}/api/random`;
             }
             showAPI();
         </script>
@@ -106,7 +106,7 @@
                                         自动
                                     </th>
                                     <th class="border-3 border-white">
-                                        <a id="linktextauto" class="p-3 text-blue-500" href="/api/random">
+                                        <a id="linktextauto" class="p-3 text-blue-500" href="/api/random?q=auto">
                                             -
                                         </a>
                                     </th>

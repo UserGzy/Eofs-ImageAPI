@@ -80,15 +80,36 @@ def LoadingPic():
     return FileResponse("./loading.png")
 
 @app.get("/api/random")
-def returnRandomPic(q: str = "default"):
+def returnRandomPic(request:Request , q: str = "default"):
     global tag_list
-    img_name = random.choice(tag_list.get(q,["none.png"]))
-    print("[info] Send image '"+img_name+"'")
-    response = FileResponse(os.path.join("./imgs/", img_name))
-    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
-    return response
+    if q == "auto":
+        ua = request.headers.get('User-Agent').lower()
+        if GetDeviceType(ua) == "phone":
+            print("[info] Send H")
+            img_name = random.choice(tag_list.get("H",["none.png"]))
+            print("[info] Send image '"+img_name+"'")
+            response = FileResponse(os.path.join("./imgs/", img_name))
+            response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+            return response
+        else:
+            print("[info] Send W")
+            img_name = random.choice(tag_list.get("W",["none.png"]))
+            print("[info] Send image '"+img_name+"'")
+            response = FileResponse(os.path.join("./imgs/", img_name))
+            response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+            return response
+    else:
+        img_name = random.choice(tag_list.get(q,["none.png"]))
+        print("[info] Send image '"+img_name+"'")
+        response = FileResponse(os.path.join("./imgs/", img_name))
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
 
 @app.get("/api/totalnum")
 def returnPicNum():

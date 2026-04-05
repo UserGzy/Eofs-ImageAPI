@@ -18,3 +18,11 @@ Currently, only random images are supported; tag filtering functionality will be
 <br>
 然后访问设定的端口即可<br>
 Then access the webpage from your port.<br>
+<br>
+> #### Extra · 额外内容<p></p>
+<br>使用如下命令安装***Tailwind CSS***以继续开发网页。
+<br>Use following commands install ***TailWind CSS*** to continue developing webpage.<br>
+<br>
+
+    npm install
+    npx @tailwindcss/cli -i ./style.css -o ./css/outputs.css --watch

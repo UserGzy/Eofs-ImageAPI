@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <title>Eofの图片API</title>
+        <!--<script src="https://cdn.tailwindcss.com"></script>-->
+        <link href="./css/output.css" rel="stylesheet">
+        <script>
+            var blob;
+
+            async function setRandomBackground() {
+                // 请求一次 API
+                const res = await fetch(`/api/random`);
+                
+                // 获取 Blob
+                blob = await res.blob();
+                // 转换成可用 URL
+                const url = URL.createObjectURL(blob);
+
+                // 设置两个地方的背景图
+                document.getElementById('bg1').style.backgroundImage = `url(${url})`;
+                document.getElementById('bg2').style.backgroundImage = `url(${url})`;
+            }
+
+            async function downloadCurrent() {
+                const downloadURL = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = downloadURL;
+                link.download = 'img';
+                link.click();
+                URL.revokeObjectURL(downloadURL);
+            }
+
+            setRandomBackground();
+        </script>
+        <script>
+            async function getPicnum() {
+                // 请求一次 API
+                const res = await fetch(`/api/totalnum`);
+
+                const text = await res.json();
+
+                document.getElementById('picnum').innerHTML=`${text}`;
+            }
+
+            getPicnum();
+        </script>
+        <script>
+            window.onload = function showAPI() {
+                document.getElementById('linktextW').innerHTML=`${window.location.origin}/api/randomW`;
+                document.getElementById('linktextH').innerHTML=`${window.location.origin}/api/randomH`;
+                document.getElementById('linktextauto').innerHTML=`${window.location.origin}/api/random`;
+            }
+            showAPI();
+        </script>
+    </head>
+    <body class="flex flex-col h-screen">
+        <!-- 背景图 -->
+        <div id="bg1" class="absolute inset-0 h-full w-full bg-cover bg-center"></div>
+        <!-- 半透明遮罩 -->
+        <div class="absolute inset-0 bg-black opacity-5"></div>
+        <!-- 内容层 -->
+        <div class="flex flex-col flex-1 text-white z-10 relative">
+            <!-- 标题栏 -->
+            <div class="m-3 p-5 pl-10 rounded-3xl h-[10%] flex bg-black/60 items-center hover:bg-black/50 transition">
+                <div class="text-3xl font-bold">
+                    Eofの图片API
+                </div>
+            </div>
+            <!-- 内容 -->
+            <div class="flex flex-1 flex-row">
+                <div class="relative flex flex-col ml-3 mr-3 mb-3 p-10 rounded-3xl w-[70%] h-auto bg-black/60 hover:bg-black/50 transition z-10">
+                    <div class="flex pb-10">
+                        <div class="text-3xl font-bold">
+                            一个随机图片API，目前已有
+                        </div>
+                        <div id="picnum" class="text-3xl font-bold text-blue-500">
+                            -
+                        </div>
+                        <div class="text-3xl font-bold">
+                            张图片
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 justify-start">
+                        <table class="table-auto border-solid border-white border-3">
+                            <thead class="text-white text-3xl">
+                                <tr>
+                                    <th class="border-3 p-3" colspan="2">
+                                        API接口
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-white text-3xl border-white">
+                                <tr>
+                                    <th class="border-3 p-3">
+                                        自动
+                                    </th>
+                                    <th class="border-3 border-white">
+                                        <a id="linktextauto" class="p-3 text-blue-500" href="/api/random">
+                                            -
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="border-3 p-3">
+                                        横板
+                                    </th>
+                                    <th class="border-3 border-white">
+                                        <a id="linktextW" class="p-3 text-blue-500" href="/api/randomW">
+                                            -
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="border-3 p-3">
+                                        竖板
+                                    </th>
+                                    <th class="border-3 border-white">
+                                        <a id="linktextH" class="p-3 text-blue-500" href="/api/randomH">
+                                            -
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="border-3 p-3" colspan="2">
+                                        <button class="w-full p-3 bg-blue-500 font-bold rounded-2xl text-2xl hover:bg-blue-600 transition" onclick="downloadCurrent()">
+                                            点击下载当前图片
+                                        </button>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex flex-col mt-auto">
+                        <div class="mt-5 text-2xl font-bold">
+                            免责声明：
+                        </div>
+                        <div class="mt-5 text-xl font-bold">
+                            本站图片全部收集于网络，仅用于个人学习、参考或娱乐用途，所有图片版权均归原作者所有。
+                        </div>
+                        <div class="mt-5 text-xl font-bold">
+                            如您发现本站内容侵犯了您的版权，请通过 [xterfusion@proton.me] 联系我，我将在第一时间移除相关内容。本站不用于商业用途，亦不对因使用本网站内容而产生的任何法律责任承担责任。
+                        </div>
+                    </div>
+                </div>
+                <div class="relative flex mr-3 ml-3 mb-3 rounded-3xl flex-1">
+                    <div class="absolute inset-0 bg-black rounded-3xl opacity-50 hover:opacity-40 transition"></div>
+                    <div class="absolute inset-0 p-3 pointer-events-none">
+                        <div id="bg2" class="flex flex-1 h-full rounded-2xl bg-cover bg-center bg-local"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

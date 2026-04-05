@@ -1,10 +1,10 @@
 # Eofs-ImageAPI
 ## Introduction · 简介
 一个基于Python的轻量级随机图片API<br>
-支持按标签筛选图片功能<br>
+支持按图片标签（Xmp.dc.subject）筛选图片<br>
 <br>
 A lightweight random image API based on Python.<br>
-Currently, only random images are supported; tag filtering functionality will be added later.<br>
+Supports filtering images by image tag (Xmp.dc.subject).<br>
 <br>
 ## Usage · 使用方法<p></p>
 ***Create Environment · 创建环境***<br>

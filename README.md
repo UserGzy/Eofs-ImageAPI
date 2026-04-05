@@ -1,7 +1,7 @@
 # Eofs-ImageAPI
 ## Introduction · 简介
 一个基于Python的轻量级随机图片API<br>
-目前仅支持返回随机图片，后续会添加标签筛选功能<br>
+支持按标签筛选图片功能<br>
 <br>
 A lightweight random image API based on Python.<br>
 Currently, only random images are supported; tag filtering functionality will be added later.<br>

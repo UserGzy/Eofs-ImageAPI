@@ -41,12 +41,24 @@
                 document.getElementById('picnum').innerHTML=`${text}`;
             }
 
+            async function getTagList() {
+                // 请求一次 API
+                const res = await fetch(`/api/tagstr`);
+
+                const text = await res.json();
+
+                document.getElementById('taglist').innerHTML=`标签列表：${text}`;
+            }
+
             getPicnum();
+
+            getTagList();
         </script>
         <script>
             window.onload = function showAPI() {
                 document.getElementById('linktextW').innerHTML=`${window.location.origin}/api/random?q=W`;
                 document.getElementById('linktextH').innerHTML=`${window.location.origin}/api/random?q=H`;
+                document.getElementById('linktextuni').innerHTML=`${window.location.origin}/api/random?q={Tag}`;
                 document.getElementById('linktextauto').innerHTML=`${window.location.origin}/api/random`;
             }
             showAPI();
@@ -117,6 +129,23 @@
                                     </th>
                                     <th class="border-3 border-white">
                                         <a id="linktextH" class="p-3 text-blue-500" href="/api/random?q=H">
+                                            -
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="border-3 p-3">
+                                        通用
+                                    </th>
+                                    <th class="border-3 border-white">
+                                        <a id="linktextuni" class="p-3 text-blue-500" href="/api/random?q=default">
+                                            -
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="border-3 border-white p-3" colspan="2">
+                                        <a id="taglist" class="p-3">
                                             -
                                         </a>
                                     </th>

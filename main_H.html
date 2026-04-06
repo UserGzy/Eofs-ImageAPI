@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-Hans">
     <head>
         <title>Eofの图片API</title>
         <!--<script src="https://cdn.tailwindcss.com"></script>-->
@@ -61,7 +62,7 @@
                 document.getElementById('linktextuni').innerHTML=`${window.location.origin}/api/random?q={Tag}`;
                 document.getElementById('linktextauto').innerHTML=`${window.location.origin}/api/random?q=auto`;
             }
-            showAPI();
+            
         </script>
     </head>
     <body class="flex flex-col h-screen">
@@ -79,7 +80,8 @@
             </div>
             <!-- 内容 -->
             <div class="flex flex-1 flex-col">
-                <div class="relative flex mr-3 ml-3 mb-3 rounded-3xl h-auto p-3 bg-black/60" id="imgplaceholder">
+                <div class="relative flex mr-3 ml-3 mb-3 rounded-3xl h-auto p-3 bg-black/60 items-center flex-col text-3xl" id="imgplaceholder">
+			<p>加载中</p>
                 </div>
                 <div class="relative flex flex-col ml-3 mr-3 mb-3 p-10 rounded-3xl h-auto bg-black/60 hover:bg-black/50 transition z-10">
                     <div class="flex pb-10 justify-center">

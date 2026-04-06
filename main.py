@@ -121,7 +121,14 @@ def returnTagstr():
     global tag_str
     return tag_str
 
-
 @app.get("/css/{name}")
 def returnCSS(name:str):
     return FileResponse("./css/"+name)
+
+@app.get("/robots.txt")
+def returnRobotstxt():
+    return FileResponse("./webinfo/robots.txt")
+
+@app.get("/sitemap.xml")
+def returnSiteMap():
+    return FileResponse("./webinfo/sitemap.xml")

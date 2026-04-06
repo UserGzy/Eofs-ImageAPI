@@ -1,5 +1,4 @@
 # Eofs-ImageAPI
-## Introduction · 简介
 一个基于Python、本地部署的轻量级 ****随机图片API****  
 具有如下特性：
 - 支持按图片标签（Xmp.dc.subject）筛选图片
@@ -22,12 +21,12 @@ It has the following features:
 ***Start up · 启动***  
 `(.venv) uvicorn main:app --port <your port> --host 0.0.0.0`  
   
-然后访问设定的端口即可  
-Then access the webpage from your port.<br>
+然后访问webpage复制链接即可使用  
+Then access the webpage and copy the prorvided link.<br>
 <br>
 ## Extra · 额外内容  
-使用如下命令安装***Tailwind CSS***以继续开发网页。
-  Use following commands install ***TailWind CSS*** to continue developing webpage.  
+使用如下命令安装***Tailwind CSS***以继续开发网页。  
+Use following commands install ***TailWind CSS*** to continue developing webpage.  
   
 
     npm install

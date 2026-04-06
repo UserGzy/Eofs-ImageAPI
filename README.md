@@ -1,7 +1,7 @@
 # Eofs-ImageAPI
 ## Introduction · 简介
-一个基于Python的轻量级随机图片API<br>
-具有如下特性：  
+一个基于Python、本地部署的轻量级 ****随机图片API****  
+具有如下特性：
 - 支持按图片标签（Xmp.dc.subject）筛选图片
 - 自动读取标签并建立索引，导入图片后可以直接通过参数查询
 - 支持根据User-Agent判断设备类型并返回特定的图片（横板/竖版）
